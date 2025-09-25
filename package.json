@@ -1,11 +1,12 @@
 {
   "name": "gorq-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "API Gorq para deploy no Vercel (exemplo)",
+  "main": "api/gorq.js",
   "scripts": {
-    "start": "node api/exemplo.js"
+    "start": "node api/gorq.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "node-fetch": "2.6.7"
   }
 }
