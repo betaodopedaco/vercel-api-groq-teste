@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste API Gorq</title>
+</head>
+<body>
+  <h1>Teste da API Gorq</h1>
+
+  <textarea id="prompt" rows="4" cols="50" placeholder="Digite seu prompt aqui"></textarea><br>
+  <button onclick="enviarPrompt()">Enviar</button>
+
+  <h2>Resposta:</h2>
+  <pre id="resposta"></pre>
+
+  <script>
+    async function enviarPrompt() {
+      const prompt = document.getElementById("prompt").value;
+      const respostaEl = document.getElementById("resposta");
+
+      try {
+        const res = await fetch("https://<seu-projeto>.vercel.app/api/gorq", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        });
+
+        const data = await res.json();
+        respostaEl.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        respostaEl.textContent = "Erro: " + err;
+      }
+    }
+  </script>
+</body>
+</html>
